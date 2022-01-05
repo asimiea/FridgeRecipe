@@ -20,18 +20,18 @@ class TemperatureConverter:#this should be changed to search class
 
 
 class ConverterFrame(ttk.Frame):
-    def __init__(self, container, unit_from, converter):
+    def __init__(self, container, type, converter):
         super().__init__(container)
 
-        self.unit_from = unit_from
+        self.type = type
         self.converter = converter
 
         # field options
         options = {'padx': 5, 'pady': 0}
 
         # temperature label
-        self.temperature_label = ttk.Label(self, text=self.unit_from)
-        self.temperature_label.grid(column=0, row=0, sticky='w',  **options)
+        self.ingredientsLabel = ttk.Label(self, text=self.type)
+        self.ingredientsLabel.grid(column=0, row=0, sticky='w',  **options)
 
         # temperature entry
         self.temperature = tk.StringVar()
@@ -40,13 +40,13 @@ class ConverterFrame(ttk.Frame):
         self.temperature_entry.focus()
 
         # button
-        self.convert_button = ttk.Button(self, text='Search')
-        self.convert_button.grid(column=2, row=0, sticky='w', **options)
-        self.convert_button.configure(command=self.convert)
+        self.searchButton = ttk.Button(self, text='Search')
+        self.searchButton.grid(column=2, row=0, sticky='w', **options)
+        self.searchButton.configure(command=self.convert)
 
         # result label
         self.result_label = ttk.Label(self)
-        self.result_label.grid(row=1, columnspan=3, **options)
+        self.result_label.grid(row=1, columnspan=7, **options)
 
         # add padding to the frame and show it
         self.grid(column=0, row=0, padx=5, pady=5, sticky="nsew")
@@ -96,11 +96,13 @@ class ControlFrame(ttk.LabelFrame):
         self.frames[0] = ConverterFrame(
             container,
             'Enter Ingridients',
-            TemperatureConverter.fahrenheit_to_celsius)
+            TemperatureConverter.fahrenheit_to_celsius
+            )
         self.frames[1] = ConverterFrame(
             container,
             'Enter Ingridients',
-            TemperatureConverter.celsius_to_fahrenheit)
+            TemperatureConverter.celsius_to_fahrenheit
+            )
 
         self.change_frame()
 
