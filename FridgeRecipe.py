@@ -95,12 +95,12 @@ class ControlFrame(ttk.LabelFrame):
         self.frames = {}
         self.frames[0] = ConverterFrame(
             container,
-            'Enter Ingridients',
+            'Enter Ingredients',
             TemperatureConverter.fahrenheit_to_celsius
             )
         self.frames[1] = ConverterFrame(
             container,
-            'Enter Ingridients',
+            'Enter Ingredients',
             TemperatureConverter.celsius_to_fahrenheit
             )
 
